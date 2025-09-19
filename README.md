@@ -3,7 +3,7 @@ Interaction system for Unreal Engine 5, designed for multiplayer projects using 
 
 **[Showcase](https://youtu.be/zi3RGkh3Wkc)**
 
-##Features:
+## Features:
 *  Multiplayer-ready interaction logic
 *  GAS-driven abilities and attributes
 *  Extensible interaction component system
@@ -15,8 +15,9 @@ Perfect as a foundation for cooperative or competitive games requiring flexible 
 ## How to setup
 ### 1 Сonnection of the interaction module
 Add InteractionSystem module to /Game/Source/
-Content files replace to your project
-Note:    AGC_InteractionOutliling must be located in directory for GameplayCues
+
+Content files replace to your project.
+	Note:    AGC_InteractionOutliling must be located in directory for GameplayCues
 
 In [project].Target.cs, [project]Editor.Target.cs add this:
 ```c#
@@ -43,7 +44,8 @@ In DefaultGame.ini add this code
 InteractionWidgetClassPath=..._C
 PostprocessOutliningMaterialPath=...
 ```
-Note:   InteractionWidgetClassPath is path to object widget with suffix _C
+Note:
+	InteractionWidgetClassPath is path to object widget with suffix _C
 	PostprocessOutliningMaterialPath is path to material
 	
 ### 3 Using the system
@@ -51,8 +53,9 @@ Add to character and interactable actors include:
 ```cpp
 #include "InteractionSystem/Public/Interaction.h"
 ```	
-Grant UGAInteraction 
-	After AbilitySystemComponent initialization start GameplayCue locally for outlining and tooltip from AGC_InteractableOutlinig::StartGameplayCue(const UAbilitySystemComponent* ASC, const FGameplayCueParameters& parameters):
+Grant UGAInteraction
+
+After AbilitySystemComponent initialization start GameplayCue locally for outlining and tooltip from AGC_InteractableOutlinig::StartGameplayCue(const UAbilitySystemComponent* ASC, const FGameplayCueParameters& parameters):
 ```cpp
 	if (IsLocallyControlled() && AbilitySystemComponent)
 {
@@ -84,13 +87,14 @@ if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputCompone
 	...
 }
 ```
-Note:    Change APlayer_Character_Base to your own name of character class
+Note:
+	Change APlayer_Character_Base to your own name of character class
 	Change EAbilityInputID::IA_Interaction to your own enumerator for AbilitiesInputID or set int value.
 	IA_Interaction is InputAction with trigger seted to "Down"
 
 Interactable objects must implement IInteractable interface.
-Note: IInteractable::Interact(AActor* Instigator) executes onlu on server, so you must use RPC or replication
+Note: IInteractable::Interact(AActor* Instigator) executes only on server, so you must use RPC or replication
 
 ## Problems of this system:
-Interaction and outliling of interactable objects are not linked. You can have an outline, but you cannot interact if ability isn`t granted.
-Prediction is not supported.
+*	Interaction and outliling of interactable objects are not linked. You can have an outline, but you cannot interact if ability isn`t granted.
+*	Prediction is not supported.
