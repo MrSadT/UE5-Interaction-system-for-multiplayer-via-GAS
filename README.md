@@ -10,8 +10,8 @@ Features:
 
 Perfect as a foundation for cooperative or competitive games requiring flexible interaction mechanics.
 
-##How to setup
-###1 Сonnection of the interaction module
+## How to setup
+### 1 Сonnection of the interaction module
 Add InteractionSystem module to /Game/Source/
 Content files replace to your project
 Note:    AGC_InteractionOutliling must be located in directory for GameplayCues
@@ -26,7 +26,7 @@ In [project].Build.cs
 	//or
 	//PrivateDependencyModuleNames.AddRange(new string[] {... ,"InteractionSystem" });
 ```
-###2 Setup outlining and interaction bar
+### 2 Setup outlining and interaction bar
 Enabling Custom Depth-Stencil Pass:
 [Project Settings → Rendering → Postprocessing → Custom Depth-Stencil Pass]
 Set "Enabled with Stencil"
@@ -44,7 +44,7 @@ PostprocessOutliningMaterialPath=...
 Note:   InteractionWidgetClassPath is path to object widget with suffix _C
 	PostprocessOutliningMaterialPath is path to material
 	
-###3 Using the system
+### 3 Using the system
 Add to character and interactable actors include:
 ```cpp
 #include "InteractionSystem/Public/Interaction.h"
@@ -89,6 +89,6 @@ Note:    Change APlayer_Character_Base to your own name of character class
 Interactable objects must implement IInteractable interface.
 Note: IInteractable::Interact(AActor* Instigator) executes onlu on server, so you must use RPC or replication
 
-##Problems of this system:
-	Interaction and outliling of interactable objects are not linked. You can have an outline, but you cannot interact if ability isn`t granted.
-	Prediction is not supported.
+## Problems of this system:
+Interaction and outliling of interactable objects are not linked. You can have an outline, but you cannot interact if ability isn`t granted.
+Prediction is not supported.
